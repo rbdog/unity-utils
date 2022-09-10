@@ -10,7 +10,6 @@ using UnityEngine;
 
 ## タイマーの生成
 
-    // 新しいタイマーを作って gameObject に持たせる
     var timer = gameObject.AddComponent<Timer>();
 
 ## カウントアップ (0, 1, 2 ...)
@@ -18,8 +17,7 @@ using UnityEngine;
     timer.CountUp(1.0f, 
         (time) => 
         {
-            // 1秒 に 1回 ここに来る
-            // time には、その時の時間が入っている
+            // 1秒 に 1回 ここに来る. time には、その時の時間が入っている
             Debug.Log(time);
         }
     );
@@ -29,8 +27,7 @@ using UnityEngine;
     timer.CountDown(30.0f, 1.0f, 
         (time) => 
         {
-            // 1秒 に 1回 ここに来る
-            // time には 残り時間 が入っている
+            // 1秒 に 1回 ここに来る. time には 残り時間 が入っている
             Debug.Log(time);
         }, 
         () => 
@@ -45,7 +42,7 @@ using UnityEngine;
     timer.Pause(
         (time)=>
         {
-            // time にはタイマーが止まった時の時間が入っている
+            // time には止まった時の時間が入っている
             Debug.Log(time);
         }
     );
@@ -145,12 +142,6 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 他のプログラムによってTimeScaleが0以下になっていた場合は、このタイマーを停止状態にする
-        if (Time.timeScale <= 0)
-        {
-            isTicking = false; // 停止状態
-        }
-
         // タイマー動作中のみ実行
         if (isTicking)
         {
