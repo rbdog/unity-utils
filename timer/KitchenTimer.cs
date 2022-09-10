@@ -4,19 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
-<使い方>
+# 使い方
 
-■　前提
+## 準備
 
-    このスクリプトをUnityの中のどこかに置く。タイマーを使いたいスクリプトの中で、下記を書く。
+    このスクリプトをUnityの中のどこかに置く
 
-■　準備
+## タイマーの生成
 
-    // 新しいタイマーを作る(オブジェクトにスクリプトを貼り付ける)
-    var timer = this.gameObject.AddComponent<KitchenTimer>();
+    // 新しいタイマーを作って gameObject に持たせる
+    var timer = gameObject.AddComponent<KitchenTimer>();
 
 
-■ カウントアップ(0, 1, 2 ...)
+## カウントアップ (0, 2, 4, 6 ...)
 
     timer.StartCountUp(2.0f, 
         (time) => 
@@ -27,23 +27,23 @@ using UnityEngine;
         }
     );
 
-■ カウントダウン(10, 9, 8 ...)
+## カウントダウン (30, 29, 28, 27 ...)
 
     timer.StartCountDown(30.0f, 2.0f, 
         (time) => 
         {
-            // 2.0秒に一回ここに来る
-            // time には、その時の時間が入っている
+            // 2.0秒 に 1回 ここに来る
+            // time には 残り時間 が入っている
             Debug.Log(time);
         }, 
         () => 
         {
-            // 30.0秒のカウントダウンが終わったらここに来る
+            // 30.0秒 のカウントダウンが終わったらここに来る
             Debug.Log("complete");
         }
     );
 
-■ ストップ
+## ストップ
 
     timer.Stop(
         (time)=>
@@ -53,15 +53,15 @@ using UnityEngine;
         }
     );
 
-■ ストップ時点から再開
+## ストップ時点から再開
 
     timer.StartFromStopPoint();
 
-■ 最初から測り直し
+## 最初から測り直し
 
     timer.ResetAndReStart();
 
-■ タイマーを捨てる(オブジェクトに貼り付いたスクリプトを削除する)
+## タイマーを捨てる
 
     timer.Dispose();
 
